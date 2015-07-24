@@ -11,7 +11,7 @@ set<string> words;
 map<int,string> listOfValidWords;
 
 void permutation(string s,int i,int n);
-void printPowerSet(char *word, int word_size);
+void generateCombinations(char *word, int word_size);
 void swap(char& a, char& b);
 bool isValidWord(string s);
 int findWordScore(string s);
@@ -36,7 +36,7 @@ int main()
     return 0;
 }
 
-void generateCombination(char *word, int word_size)
+void generateCombinations(char *word, int word_size)
 {
 
     unsigned int numOfCombs = pow(2, word_size);
