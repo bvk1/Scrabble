@@ -9,21 +9,44 @@ using namespace std;
 
 set<string> words;
 map<int,string> listOfValidWords;
+
 void permutation(string s,int i,int n);
-void printPowerSet(char *word, int word_size)
+void generateCombinations(char *word, int word_size);
+void swap(char& a, char& b);
+bool isValidWord(string s);
+int findWordScore(string s);
+void insertIntoMap(int key,string word);
+void printBestWords();
+
+
+int main()
+{
+    char input[7];
+    cin >> input;
+    ifstream inFile;
+    inFile.open("sowpods.txt");
+    string line;
+    while (!inFile.eof())
+    {
+       getline(inFile, line);
+       words.insert(line);
+     }
+    generateCombinations(input, 7);
+    printBestWords();
+    return 0;
+}
+
+void generateCombinations(char *word, int word_size)
 {
 
-    unsigned int pow_set_size = pow(2, word_size);
+    unsigned int numOfCombs = pow(2, word_size);
     int counter, j;
     string combination = "";
-    /*Run from counter 000..0 to 111..1*/
-    for(counter = pow_set_size -1 ; counter >= 0; counter--)
+    for(counter = numOfCombs -1 ; counter >= 0; counter--)
     {
         combination = "";
       for(j = 0; j < word_size; j++)
        {
-          /* Check if jth bit in the counter is word
-             If word then print jth element from word */
           if(counter & (1<<j))
                  combination += word[j];
 
@@ -69,7 +92,6 @@ void insertIntoMap(int key,string word)
         listOfValidWords[key] = word;
 }
 
-/* Function to obtain permutations of string characters */
 void permutation(string s,int i,int n)
 {
     int j;
@@ -98,21 +120,4 @@ void printBestWords()
 	--ii;
 	cout << (*ii).first << "  " << (*ii).second;
 
-}
-
-/*Driver program to test printPowerSet*/
-int main()
-{
-    char input[] = "eowrbfs";
-    ifstream inFile;
-    inFile.open("sowpods.txt");
-    string line;
-    while (!inFile.eof())
-    {
-       getline(inFile, line);
-       words.insert(line);
-     }
-    printPowerSet(input, 7);
-    printBestWords();
-    return 0;
 }
