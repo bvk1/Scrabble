@@ -18,17 +18,13 @@ void printPowerSet(char *word, int word_size)
     unsigned int pow_set_size = pow(2, word_size);
     int counter, j;
     string combination = "";
-    /*Run from counter 000..0 to 111..1*/
     for(counter = pow_set_size -1 ; counter >= 0; counter--)
     {
         combination = "";
       for(j = 0; j < word_size; j++)
        {
-          /* Check if jth bit in the counter is word
-             If word then print jth element from word */
-          if(counter & (1<<j))
+          if (counter & (1<<j))
                  combination += word[j];
-
        }
         permutation(combination,0,combination.length());
 
@@ -63,7 +59,7 @@ int findWordScore(string s){
 void insertIntoMap(int key,string word)
 {
     if (listOfValidWords.find(key) != listOfValidWords.end())
-	{
+    {
         listOfValidWords[key] += " " + word;
     }
     else
@@ -77,9 +73,9 @@ void replace(string s, int j)
 		if(s[i]=='@')
 			s[i]=j;
 	}
-	cout<<s<<endl;
+	cout << s << endl;
 }
-/* Function to obtain permutations of string characters */
+
 void permutation(string s,int i,int n)
 {
     int j;
@@ -88,17 +84,17 @@ void permutation(string s,int i,int n)
     {
     	if(pos != -1)
     	{
-    		for(char itr='a'; itr<='z'; itr++)
+    		for(char itr = 'a'; itr <= 'z'; itr++)
     		{
-    			s[pos]=itr;
-            	if(isValidWord(s))
-                	insertIntoMap(findWordScore(s)-scoreArray[itr-'a'],s);
+    			s[pos] = itr;
+            		if(isValidWord(s))
+                		insertIntoMap(findWordScore(s)-scoreArray[itr-'a'],s);
     		}
 		}
 		else
 		{
 			if(isValidWord(s))
-            insertIntoMap(findWordScore(s),s);
+            		insertIntoMap(findWordScore(s),s);
 		}
 		
     }
@@ -121,10 +117,8 @@ void printBestWords()
     map<int,string>::iterator ii = listOfValidWords.end();
 	--ii;
 	cout << (*ii).first << "  " << (*ii).second;
-
 }
 
-/*Driver program to test printPowerSet*/
 int main()
 {
     char input[] = "bera@sk";
