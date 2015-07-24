@@ -103,7 +103,8 @@ void printBestWords()
 /*Driver program to test printPowerSet*/
 int main()
 {
-    char input[] = "eowrbfs";
+    char input[7];
+    cin >> input;
     ifstream inFile;
     inFile.open("sowpods.txt");
     string line;
