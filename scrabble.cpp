@@ -42,14 +42,11 @@ void generateCombination(char *word, int word_size)
     unsigned int numOfCombs = pow(2, word_size);
     int counter, j;
     string combination = "";
-    /*Run from counter 000..0 to 111..1*/
     for(counter = numOfCombs -1 ; counter >= 0; counter--)
     {
         combination = "";
       for(j = 0; j < word_size; j++)
        {
-          /* Check if jth bit in the counter is word
-             If word then print jth element from word */
           if(counter & (1<<j))
                  combination += word[j];
 
