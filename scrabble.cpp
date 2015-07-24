@@ -31,19 +31,19 @@ int main()
        getline(inFile, line);
        words.insert(line);
      }
-    printPowerSet(input, 7);
+    generateCombinations(input, 7);
     printBestWords();
     return 0;
 }
 
-void printPowerSet(char *word, int word_size)
+void generateCombination(char *word, int word_size)
 {
 
-    unsigned int pow_set_size = pow(2, word_size);
+    unsigned int numOfCombs = pow(2, word_size);
     int counter, j;
     string combination = "";
     /*Run from counter 000..0 to 111..1*/
-    for(counter = pow_set_size -1 ; counter >= 0; counter--)
+    for(counter = numOfCombs -1 ; counter >= 0; counter--)
     {
         combination = "";
       for(j = 0; j < word_size; j++)
