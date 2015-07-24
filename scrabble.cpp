@@ -9,15 +9,32 @@ using namespace std;
 
 set<string> words;
 map<int,string> listOfValidWords;
+
 void permutation(string s,int i,int n);
-void printBestWords();
 void printPowerSet(char *word, int word_size);
 void swap(char& a, char& b);
 bool isValidWord(string s);
 int findWordScore(string s);
 void insertIntoMap(int key,string word);
-void insertIntoMap(int key,string word);
 void printBestWords();
+
+
+int main()
+{
+    char input[7];
+    cin >> input;
+    ifstream inFile;
+    inFile.open("sowpods.txt");
+    string line;
+    while (!inFile.eof())
+    {
+       getline(inFile, line);
+       words.insert(line);
+     }
+    printPowerSet(input, 7);
+    printBestWords();
+    return 0;
+}
 
 void printPowerSet(char *word, int word_size)
 {
@@ -106,21 +123,4 @@ void printBestWords()
 	--ii;
 	cout << (*ii).first << "  " << (*ii).second;
 
-}
-
-int main()
-{
-    char input[7];
-    cin >> input;
-    ifstream inFile;
-    inFile.open("sowpods.txt");
-    string line;
-    while (!inFile.eof())
-    {
-       getline(inFile, line);
-       words.insert(line);
-     }
-    printPowerSet(input, 7);
-    printBestWords();
-    return 0;
 }
