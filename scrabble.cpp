@@ -10,6 +10,15 @@ using namespace std;
 set<string> words;
 map<int,string> listOfValidWords;
 void permutation(string s,int i,int n);
+void printBestWords();
+void printPowerSet(char *word, int word_size);
+void swap(char& a, char& b);
+bool isValidWord(string s);
+int findWordScore(string s);
+void insertIntoMap(int key,string word);
+void insertIntoMap(int key,string word);
+void printBestWords();
+
 void printPowerSet(char *word, int word_size)
 {
 
@@ -69,7 +78,6 @@ void insertIntoMap(int key,string word)
         listOfValidWords[key] = word;
 }
 
-/* Function to obtain permutations of string characters */
 void permutation(string s,int i,int n)
 {
     int j;
@@ -100,7 +108,6 @@ void printBestWords()
 
 }
 
-/*Driver program to test printPowerSet*/
 int main()
 {
     char input[] = "eowrbfs";
